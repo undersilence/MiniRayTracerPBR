@@ -2,6 +2,7 @@
 $$
 L_o(p, \omega_o) = L_e(p, w_o) + \int_{\Omega}f(p, \omega_i\rightarrow\omega_o)L_i(p, \omega_i)\cos\theta\mathrm{d}\omega_i
 $$
+
   Multithread RayTracer(Cook-Torrance model, metallic workflow) implemented by C++.
 
   The basic code frame comes from [GAMES101.2020](https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html) Assignment7.
