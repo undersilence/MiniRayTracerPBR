@@ -28,14 +28,14 @@ int main(int argc, char** argv)
     Material* light = new Material(DIFFUSE, (8.0f * Vector3f(0.747f+0.058f, 0.747f+0.258f, 0.747f) + 15.6f * Vector3f(0.740f+0.287f,0.740f+0.160f,0.740f) + 18.4f *Vector3f(0.737f+0.642f,0.737f+0.159f,0.737f)));
     light->albedo = Vector3f(0.65f);
 
-	Material* red_plastic = new Material(MICROFACET, Vector3f(0), 0.8, 0);
-	red_plastic->albedo = Vector3f(1.0f, 0.05f, 0.04f);
-	Material* white_plastic = new Material(MICROFACET, Vector3f(0), 0.8, 0);
-	white_plastic->albedo = Vector3f(0.875f, 0.81f, 0.78f);
-	Material* green_plastic = new Material(MICROFACET, Vector3f(0), 0.8, 0);
-	green_plastic->albedo = Vector3f(0.14f, 1.0f, 0.091f);
-	Material* copper = new Material(MICROFACET, Vector3f(0), 0.2, 0.98);
-	copper->albedo = Vector3f(0.95f, 0.64f, 0.54f);
+    Material* red_plastic = new Material(MICROFACET, Vector3f(0), 0.8, 0);
+    red_plastic->albedo = Vector3f(1.0f, 0.05f, 0.04f);
+    Material* white_plastic = new Material(MICROFACET, Vector3f(0), 0.8, 0);
+    white_plastic->albedo = Vector3f(0.875f, 0.81f, 0.78f);
+    Material* green_plastic = new Material(MICROFACET, Vector3f(0), 0.8, 0);
+    green_plastic->albedo = Vector3f(0.14f, 1.0f, 0.091f);
+    Material* copper = new Material(MICROFACET, Vector3f(0), 0.2, 0.98);
+    copper->albedo = Vector3f(0.95f, 0.64f, 0.54f);
     Material* silver = new Material(MICROFACET, Vector3f(0), 0.1, 0.98);
     silver->albedo = Vector3f(0.95f, 0.93f, 0.88f);
     Material* gold = new Material(MICROFACET, Vector3f(0), 0.1, 0.98);
@@ -49,11 +49,11 @@ int main(int argc, char** argv)
     MeshTriangle left("models/cornellbox/left.obj", red_plastic);
     MeshTriangle right("models/cornellbox/right.obj", green_plastic);
     MeshTriangle light_("models/cornellbox/light.obj", light);
-	MeshTriangle bunny("models/bunny/bunny_big.obj", copper);
+    MeshTriangle bunny("models/bunny/bunny_big.obj", copper);
     Sphere ball(Vector3f(138,120,334), 120, gold);
 
     scene.Add(&floor);
-	scene.Add(&bunny);
+    scene.Add(&bunny);
     scene.Add(&ball);
     // scene.Add(&shortbox);
     scene.Add(&tallbox);
@@ -66,14 +66,14 @@ int main(int argc, char** argv)
     Renderer r;
 
     auto start = std::chrono::system_clock::now();
-	r.spp = 32;
-	r.num_of_thread = 12;
-	if(argc > 2) {
-		int arg_spp = atol(argv[1]);
-		int arg_thread = atol(argv[2]);
-		r.spp = arg_spp > 0 ? arg_spp : r.spp;
-		r.num_of_thread = arg_thread > 0 ? arg_thread : r.num_of_thread;
-	}
+    r.spp = 32;
+    r.num_of_thread = 12;
+    if(argc > 2) {
+        int arg_spp = atol(argv[1]);
+        int arg_thread = atol(argv[2]);
+        r.spp = arg_spp > 0 ? arg_spp : r.spp;
+        r.num_of_thread = arg_thread > 0 ? arg_thread : r.num_of_thread;
+    }
     r.RenderMultithread(scene);
     auto stop = std::chrono::system_clock::now();
 
