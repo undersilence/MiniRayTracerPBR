@@ -14,15 +14,15 @@ $$
 + speed up intersection detection of triangle mesh with BVH
 + implement anti-aliasing by create random ray inside one pixel.(not by filter)
 ## Results
-| ssp16 | ssp32 |
+| spp16 | spp32 |
 | :------: | :------: |
 |![pic1](image/784x784_16spp_1597337087.png)|![pic2](image/784x784_32spp_17s.png)
 
-|ssp128| ssp512 |
+|spp128| spp512 |
 | :------: | :------: |
 |![pic3](image/784x784_128spp_1597341889.png)|![pic4](image/784x784_512spp_1597342583_261s.png)|
 
-|ssp512 rough| ssp512 all rough|
+|spp512 rough| spp512 all rough|
 | :------: | :------: |
 |![pic5](image/784x784_512spp_1597343663.png)|![pic6](image/784x784_512spp_1597344327.png)
 
