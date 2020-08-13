@@ -1,0 +1,6 @@
+*.ppm
+*.vs
+*.vscode
+*.cmake
+*.exe
+/build
