@@ -5,17 +5,12 @@
 #include "Vector.hpp"
 #include "global.hpp"
 #include <chrono>
-#include <direct.h>
 // Code frame came from GAMES101.2020
 // In the main function of the program, we create the scene (create objects and
 // lights) as well as set the options for the render (image width and height,
 // maximum recursion depth, field-of-view, etc.). We then call the render
 // function().
-int main(int argc, char** argv)
-{
-    char buf[505];
-    getcwd(buf, 200);
-    std::clog << "getcwd->" << buf << std::endl;
+int main(int argc, char** argv) {
     // Change the definition here to change resolution
     Scene scene(784, 784);
 
@@ -64,8 +59,6 @@ int main(int argc, char** argv)
     scene.buildBVH();
 
     Renderer r;
-
-    auto start = std::chrono::system_clock::now();
     r.spp = 32;
     r.num_of_thread = 12;
     if(argc > 2) {
@@ -74,6 +67,8 @@ int main(int argc, char** argv)
         r.spp = arg_spp > 0 ? arg_spp : r.spp;
         r.num_of_thread = arg_thread > 0 ? arg_thread : r.num_of_thread;
     }
+
+    auto start = std::chrono::system_clock::now();
     r.RenderMultithread(scene);
     auto stop = std::chrono::system_clock::now();
 

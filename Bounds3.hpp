@@ -12,7 +12,7 @@ class Bounds3
     Bounds3()
     {
         constexpr float minNum = std::numeric_limits<float>::lowest();
-		constexpr float maxNum = std::numeric_limits<float>::max();
+        constexpr float maxNum = std::numeric_limits<float>::max();
         pMax = Vector3f(minNum, minNum, minNum);
         pMin = Vector3f(maxNum, maxNum, maxNum);
     }

@@ -84,8 +84,8 @@ Vector3f Scene::castRay(const Ray &ray, int depth) const {
             Ray ray_reflect(p, wi);
             f_r = m->eval(wi, wo, n);
             //std::clog << "calc indirect ("<<castRay_t(Ray(inter_light.coords, wi), 0)<<")*("<<f_r<<")*("<<dotProduct(wi, n)<<")/("<<m->pdf(wi, wo, n)<<")/("<<RussianRoulette<<")"<<std::endl;
-			Vector3f irradience = castRay(ray_reflect, depth);
-        	L_indir = irradience * f_r * dotProduct(wi, n) / std::max(0.0001f, m->pdf(wi, wo, n)) / Scene::RussianRoulette;
+            Vector3f irradience = castRay(ray_reflect, depth);
+            L_indir = irradience * f_r * dotProduct(wi, n) / std::max(0.0001f, m->pdf(wi, wo, n)) / Scene::RussianRoulette;
         }
         color = L_dir + L_indir;
     }

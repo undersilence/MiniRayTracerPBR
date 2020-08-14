@@ -58,8 +58,8 @@ inline void UpdateProgress(float progress)
 };
 
 inline Vector3f SphericalToCartesian(float theta, float phi) {
-	float x = sinf(theta) * cosf(phi);
-	float y = sinf(theta) * sinf(phi);
-	float z = cosf(theta);
-	return Vector3f(x, y, z);
+    float x = sinf(theta) * cosf(phi);
+    float y = sinf(theta) * sinf(phi);
+    float z = cosf(theta);
+    return Vector3f(x, y, z);
 }

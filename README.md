@@ -3,14 +3,14 @@ $$
 L_o(p, \omega_o) = L_e(p, w_o) + \int_{\Omega}f(p, \omega_i\rightarrow\omega_o)L_i(p, \omega_i)\cos\theta\mathrm{d}\omega_i
 $$
 
-  Multithread RayTracer(Cook-Torrance model, metallic workflow) implemented by C++.
+  Multithread RayTracer(Cook-Torrance BRDF model, metallic workflow) implemented by C++.
 
   The basic code frame comes from [GAMES101.2020](https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html) Assignment7.
 
 ## Features
 + Cook-Torrance BRDF model
 + metallic workflow(material can be adjusted by [albedo, roughness, metallic], I've defined three materials(copper, silver, gold) in main.cpp as example)
-+ importance sampling microfacet-based BSDF based on GGX NDF(normal distribution function)
++ importance sampling microfacet-based BSDF for GGX NDF(normal distribution function)
 + speed up intersection detection of triangle mesh with BVH
 + implement anti-aliasing by create random ray inside one pixel.(not by filter)
 ## Results
