@@ -15,7 +15,7 @@ $$
 + implement anti-aliasing by create random ray inside one pixel.(not by filter)
 ## Results
 | spp16 | spp32 |
-| :------: | :------: | :------: | :------: |
+| :------: | :------: |
 |![pic1](image/784x784_16spp_1597337087.png)|![pic2](image/784x784_32spp_17s.png)
 
 |spp128| spp512 |
