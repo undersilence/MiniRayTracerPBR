@@ -15,16 +15,16 @@ $$
 + implement anti-aliasing by create random ray inside one pixel.(not by filter)
 ## Results
 | spp16 | spp32 |
-| :------: | :------: |
+| :------: | :------: | :------: | :------: |
 |![pic1](image/784x784_16spp_1597337087.png)|![pic2](image/784x784_32spp_17s.png)
 
 |spp128| spp512 |
 | :------: | :------: |
 |![pic3](image/784x784_128spp_1597341889.png)|![pic4](image/784x784_512spp_1597342583_261s.png)|
 
-|spp512 rough| spp512 all rough|
+|spp512 rough metal| spp512 marble floor|
 | :------: | :------: |
-|![pic5](image/784x784_512spp_1597343663.png)|![pic6](image/784x784_512spp_1597344327.png)
+|![pic5](image/784x784_512spp_1597344327.png)|![pic6](image/784x784_512spp_1597432985.png)
 
 ## Bugs
 + **SOLVED** ~~Rarely there will be particularly bright noise pointer, I think it's caused by dividing very small float(some pdf could be), maybe just spp is not high enough or algorithm's limitation?~~

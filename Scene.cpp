@@ -61,6 +61,9 @@ Vector3f Scene::castRay(const Ray &ray, int depth) const {
         Intersection inter_light;
         float pdf_light;
         sampleLight(inter_light, pdf_light);
+        if(inter_light.emit.norm() < 0.001) {
+            return color;
+        }
         Vector3f p = inter_object.coords;
         Vector3f n = inter_object.normal;
         Vector3f x = inter_light.coords;
@@ -69,21 +72,19 @@ Vector3f Scene::castRay(const Ray &ray, int depth) const {
         Vector3f wo = -ray.direction;
         Material *m = inter_object.m;
         Vector3f f_r = m->eval(ws, wo, n);
-        if ((intersect(Ray(p, ws)).coords - x).norm() < 0.01) {
-            /*std::clog << "calc(" << inter_light.emit << "),(" << f_r << "),(" << dotProduct(-ws, nn) << "),(" << dotProduct(ws, n) << "),(" << dotProduct(x - p, x - p) << "),(" << pdf_light << ")" << std::endl;*/
+        if ((intersect(Ray(p, ws)).coords - x).norm() < 0.001) {
             L_dir = inter_light.emit * f_r *
-                     dotProduct(-ws, nn) * dotProduct(ws, n) /
-                     dotProduct(x - p, x - p) /
-                     pdf_light;
+                    std::max(dotProduct(-ws, nn), 0.0f) *
+                    std::max(dotProduct(ws, n), 0.0f) /
+                    dotProduct(x - p, x - p) /
+                    pdf_light;
         }
 
         //indirect light
         if (get_random_float() < Scene::RussianRoulette) {
             Vector3f wi = m->sample(wo, n);
-            // std::clog << "sample dir " << wi << std::endl;
             Ray ray_reflect(p, wi);
             f_r = m->eval(wi, wo, n);
-            //std::clog << "calc indirect ("<<castRay_t(Ray(inter_light.coords, wi), 0)<<")*("<<f_r<<")*("<<dotProduct(wi, n)<<")/("<<m->pdf(wi, wo, n)<<")/("<<RussianRoulette<<")"<<std::endl;
             Vector3f irradience = castRay(ray_reflect, depth);
             L_indir = irradience * f_r * dotProduct(wi, n) / std::max(0.0001f, m->pdf(wi, wo, n)) / Scene::RussianRoulette;
         }

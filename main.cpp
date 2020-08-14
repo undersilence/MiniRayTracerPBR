@@ -27,18 +27,18 @@ int main(int argc, char** argv) {
     red_plastic->albedo = Vector3f(1.0f, 0.05f, 0.04f);
     Material* white_plastic = new Material(MICROFACET, Vector3f(0), 0.8, 0);
     white_plastic->albedo = Vector3f(0.875f, 0.81f, 0.78f);
+    Material* white_marble = new Material(MICROFACET, Vector3f(0), 0.001, 0);
+    white_marble->albedo = Vector3f(0.875f, 0.83f, 0.82f);
     Material* green_plastic = new Material(MICROFACET, Vector3f(0), 0.8, 0);
     green_plastic->albedo = Vector3f(0.14f, 1.0f, 0.091f);
-    Material* copper = new Material(MICROFACET, Vector3f(0), 0.2, 0.98);
+    Material* copper = new Material(MICROFACET, Vector3f(0), 0.1, 1.0);
     copper->albedo = Vector3f(0.95f, 0.64f, 0.54f);
-    Material* silver = new Material(MICROFACET, Vector3f(0), 0.1, 0.98);
+    Material* silver = new Material(MICROFACET, Vector3f(0), 0.01, 1.0);
     silver->albedo = Vector3f(0.95f, 0.93f, 0.88f);
-    Material* gold = new Material(MICROFACET, Vector3f(0), 0.1, 0.98);
+    Material* gold = new Material(MICROFACET, Vector3f(0), 0.0001, 1.0);
     gold->albedo = Vector3f(1.00f, 0.71f, 0.29f);
-    Material* plastic = new Material(MICROFACET, Vector3f(0), 0.3, 0.5);
-    plastic->albedo = Vector3f(0.05f, 0.05f, 0.05f);
 
-    MeshTriangle floor("models/cornellbox/floor.obj", copper);
+    MeshTriangle floor("models/cornellbox/floor.obj", white_marble);
     MeshTriangle shortbox("models/cornellbox/shortbox.obj", copper);
     MeshTriangle tallbox("models/cornellbox/tallbox.obj", silver);
     MeshTriangle left("models/cornellbox/left.obj", red_plastic);
@@ -59,8 +59,8 @@ int main(int argc, char** argv) {
     scene.buildBVH();
 
     Renderer r;
-    r.spp = 32;
-    r.num_of_thread = 12;
+    r.spp = 16;
+    r.num_of_thread = 6;
     if(argc > 2) {
         int arg_spp = atol(argv[1]);
         int arg_thread = atol(argv[2]);
