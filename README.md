@@ -36,7 +36,7 @@ $$
 + support common types of textures(normal map, albedo/roughness/metallic map..)
 + support transparent/anisotropic materials
 
-## Reference
+## References
 + https://learnopengl.com/PBR/Theory
 + http://jcgt.org/published/0007/04/01/paper.pdf
 + https://agraphicsguy.wordpress.com/2015/11/01/sampling-microfacet-brdf/
