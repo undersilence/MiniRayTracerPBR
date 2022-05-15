@@ -49,5 +49,3 @@ $$
 ## Tips
 + please run the program in release mode, make sure you are not in debug mode when testing your high spp result(otherwise it will be a disaster).
 + It takes about 270 seconds to complete the rendering(mingw-w64/gcc) when spp=512 with cpu i7-9750H(2.60GHz,6c12t)
-+ Sorry, my english is poor.
-
