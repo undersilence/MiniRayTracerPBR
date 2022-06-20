@@ -38,13 +38,13 @@ int main(int argc, char** argv) {
     Material* gold = new Material(MICROFACET, Vector3f(0), 0.0001, 1.0);
     gold->albedo = Vector3f(1.00f, 0.71f, 0.29f);
 
-    MeshTriangle floor("models/cornellbox/floor.obj", white_marble);
-    MeshTriangle shortbox("models/cornellbox/shortbox.obj", copper);
-    MeshTriangle tallbox("models/cornellbox/tallbox.obj", silver);
-    MeshTriangle left("models/cornellbox/left.obj", red_plastic);
-    MeshTriangle right("models/cornellbox/right.obj", green_plastic);
-    MeshTriangle light_("models/cornellbox/light.obj", light);
-    MeshTriangle bunny("models/bunny/bunny_big.obj", copper);
+    MeshTriangle floor("./models/cornellbox/floor.obj", white_marble);
+    MeshTriangle shortbox("./models/cornellbox/shortbox.obj", copper);
+    MeshTriangle tallbox("./models/cornellbox/tallbox.obj", silver);
+    MeshTriangle left("./models/cornellbox/left.obj", red_plastic);
+    MeshTriangle right("./models/cornellbox/right.obj", green_plastic);
+    MeshTriangle light_("./models/cornellbox/light.obj", light);
+    MeshTriangle bunny("./models/bunny/bunny_big.obj", copper);
     Sphere ball(Vector3f(138,120,334), 120, gold);
 
     scene.Add(&floor);
